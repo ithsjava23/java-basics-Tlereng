@@ -1,6 +1,7 @@
 package org.example;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
@@ -29,13 +30,14 @@ public class OptimalCharge {
             }
         }
 
-        String startTime = String.format("%02d", lowestSequence.get(0).getHour());
-        String endTime = String.format("%02d", (lowestSequence.get(0).getHour() + 4) % 24);
+        String startTime = String.format("%02d", lowestSequence.get(0).getStartHour());
+        String endTime = String.format("%02d", (lowestSequence.get(0).getEndHour() + 4) % 24);
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
         decimalFormat.setDecimalFormatSymbols(new DecimalFormatSymbols(new Locale("sv", "SE")));
-        System.out.printf("Påbörja laddning klockan %s%n", startTime);
         BigDecimal average = calculateSum(lowestSequence).divide(BigDecimal.valueOf(4), 2, BigDecimal.ROUND_HALF_UP);
-        System.out.printf("Medelpris 4h: %.2f öre/kWh%n", average);
+        String formattedAverage = decimalFormat.format(average);
+        System.out.printf("Påbörja laddning klockan %s%n", startTime);
+        System.out.printf("Medelpris 4h: %.2f öre/kWh%n", formattedAverage);
     }
 
     private BigDecimal calculateSum(List<HourlyPrice> sequence) {

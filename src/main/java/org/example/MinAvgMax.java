@@ -38,8 +38,8 @@ public class MinAvgMax {
             decimalFormat.setDecimalFormatSymbols(new DecimalFormatSymbols(new Locale("sv", "SE")));
 
             // Format time intervals for min and max prices.
-            String minTime = String.format("%02d-%02d", hourlyPrices.get(0).getHour(), (hourlyPrices.get(0).getHour() + 1) % 24);
-            String maxTime = String.format("%02d-%02d", hourlyPrices.get(hourlyPrices.size() - 1).getHour(), (hourlyPrices.get(hourlyPrices.size() - 1).getHour() + 1) % 24);
+            String minTime = String.format("%02d-%02d", hourlyPrices.get(0).getStartHour(), hourlyPrices.get(0).getEndHour());
+            String maxTime = String.format("%02d-%02d", hourlyPrices.get(hourlyPrices.size() - 1).getStartHour(), hourlyPrices.get(hourlyPrices.size() - 1).getEndHour());
 
             // Print the results with appropriate formatting.
             System.out.println("Lägsta pris: " + minTime + ", " + decimalFormat.format(min) + " öre/kWh");

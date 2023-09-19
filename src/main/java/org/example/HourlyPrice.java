@@ -1,23 +1,28 @@
 package org.example;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
 public class HourlyPrice {
+    private int startHour;
+    private BigDecimal price;
 
-    //Class to store the hour of the input for the price and return it so I can use it for other classes
-
-       private int hour;
-       private BigDecimal price;
-
-    public HourlyPrice(int hour,BigDecimal price){
-        this.hour = hour;
+    public HourlyPrice(int startHour, BigDecimal price) {
+        this.startHour = startHour;
         this.price = price;
-}
-    public int getHour(){
-        return hour;
     }
-    public BigDecimal getPrice(){
+
+    public int getStartHour() {
+        return startHour;
+    }
+
+    public int getEndHour() {
+        return (startHour + 1) % 24;  // Calculate the end hour based on the start hour
+    }
+
+    public BigDecimal getPrice() {
         return price;
     }
 }
