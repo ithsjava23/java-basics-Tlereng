@@ -1,16 +1,19 @@
 package org.example;
 
 import java.math.BigDecimal;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class InputNumbers {
+    private Scanner sc;
 
-    //Class for input of the prices from the user
+    public InputNumbers(Scanner sc) {
+        this.sc = sc;
+    }
+
+    // Class for input of the prices from the user
     public List<HourlyPrice> execute() {
-        Scanner sc = new Scanner(System.in);
         List<HourlyPrice> hourlyPrices = new ArrayList<>();
         System.out.println("Vänligen ange priset per timme.");
 
