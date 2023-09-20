@@ -21,8 +21,8 @@ public class App {
                 4. Bästa Laddningstid (4h)
                 e. Avsluta
                 """;
+        System.out.println(meny);
         do {
-            System.out.println(meny);
             String choice = sc.nextLine();
 
             if (choice.equalsIgnoreCase("e")) {
@@ -32,26 +32,27 @@ public class App {
             switch (choice) {
                 case "1" -> {
                     InputNumbers inputNumbers = new InputNumbers(sc);
-                    hourlyPrices = inputNumbers.execute();
+                    hourlyPrices = inputNumbers.execute(hourlyPrices);
                 }
 
                 case "2" -> {
+                    System.out.println(meny);
                     MinAvgMax minAvgMax = new MinAvgMax();
                     minAvgMax.execute(hourlyPrices);
                 }
                 case "3" -> {
+                    System.out.println(meny);
                     SortingClass sorting = new SortingClass();
                     sorting.execute(hourlyPrices);
                 }
                 case "4" -> {
+                    System.out.println(meny);
                     OptimalCharge optimalCharge = new OptimalCharge();
                     optimalCharge.execute(hourlyPrices);
                 }
                 default -> System.out.println("Ogiltigt val");
             }
         } while (true);
-
-        System.out.println("Avslutar programmet.");
         sc.close();
     }
 }
