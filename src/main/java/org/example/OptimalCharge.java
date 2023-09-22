@@ -44,12 +44,4 @@ public class OptimalCharge {
         }
         return sum;
     }
-
-    private String formatAverage(BigDecimal averageBigDecimal) {
-        String formatted = averageBigDecimal.stripTrailingZeros().toPlainString();
-        if (formatted.endsWith(".0")) {
-            formatted = formatted.substring(0, formatted.length() - 2);
-        }
-        return formatted.replace(".", ",");
-    }
 }
