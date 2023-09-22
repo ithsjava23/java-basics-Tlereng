@@ -29,13 +29,12 @@ public class OptimalCharge {
         String startTime = String.format("%02d", lowestSequence.get(0).getStartHour());
 
         // Calculate the average price as a BigDecimal with two decimal places and rounding mode HALF_UP.
-        BigDecimal averageBigDecimal = new BigDecimal(lowestSum).divide(new BigDecimal(4), 2, RoundingMode.HALF_UP);
+        BigDecimal averageBigDecimal = new BigDecimal(lowestSum).divide(new BigDecimal(4));
+        String average = String.format("%.1f", averageBigDecimal);
 
-        // Format the average using custom logic to remove trailing zeros if not significant.
-        String formattedAverage = formatAverage(averageBigDecimal);
 
         System.out.printf("\nPåbörja laddning klockan %s%n", startTime);
-        System.out.print("Medelpris 4h: " + formattedAverage + " öre/kWh\n");
+        System.out.print("Medelpris 4h: " + average + " öre/kWh");
     }
 
     private int calculateSum(List<HourlyPrice> sequence) {
