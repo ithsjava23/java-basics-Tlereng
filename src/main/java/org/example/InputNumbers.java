@@ -18,7 +18,7 @@ public class InputNumbers {
                 int price = Integer.parseInt(input);
                 hourlyPrices.add(new HourlyPrice(i, price));
             } catch (NumberFormatException e) {
-                System.out.print("Ogiltigt pris, vänligen skriv siffror");
+                System.out.print("\nOgiltigt pris, vänligen skriv siffror");
                 i--;
             }
         }

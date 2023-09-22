@@ -15,7 +15,11 @@ public class HourlyPrice {
     }
 
     public int getEndHour() {
-        return (startHour + 1) % 24;  // Calculate the end hour based on the start hour
+        int endHour = (startHour + 1) % 24;  // Calculate the end hour based on the start hour
+        if(endHour == 0){
+            endHour = 24;
+        }
+        return endHour;
     }
 
     public int getPrice() {

@@ -1,5 +1,6 @@
 package org.example;
-import java.text.DecimalFormat;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,14 +27,14 @@ public class OptimalCharge {
         }
 
         String startTime = String.format("%02d", lowestSequence.get(0).getStartHour());
-        float average = (float) lowestSum / 4;
 
-        // Create a DecimalFormat with the desired format.
-        DecimalFormat decimalFormat = new DecimalFormat("0.##");
-        // Format the average using the DecimalFormat.
-        String formattedAverage = decimalFormat.format(average);
+        // Calculate the average price as a BigDecimal with two decimal places and rounding mode HALF_UP.
+        BigDecimal averageBigDecimal = new BigDecimal(lowestSum).divide(new BigDecimal(4), 2, RoundingMode.HALF_UP);
 
-        System.out.printf("Påbörja laddning klockan %s%n", startTime);
+        // Format the average using custom logic to remove trailing zeros if not significant.
+        String formattedAverage = formatAverage(averageBigDecimal);
+
+        System.out.printf("\nPåbörja laddning klockan %s%n", startTime);
         System.out.print("Medelpris 4h: " + formattedAverage + " öre/kWh\n");
     }
 
@@ -43,5 +44,13 @@ public class OptimalCharge {
             sum += hourlyPrice.getPrice();
         }
         return sum;
+    }
+
+    private String formatAverage(BigDecimal averageBigDecimal) {
+        String formatted = averageBigDecimal.stripTrailingZeros().toPlainString();
+        if (formatted.endsWith(".0")) {
+            formatted = formatted.substring(0, formatted.length() - 2);
+        }
+        return formatted.replace(".", ",");
     }
 }
