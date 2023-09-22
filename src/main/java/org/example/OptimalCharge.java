@@ -33,7 +33,7 @@ public class OptimalCharge {
         String average = String.format("%.1f", averageBigDecimal);
 
 
-        System.out.printf("\nPåbörja laddning klockan %s%n", startTime);
+        System.out.printf("Påbörja laddning klockan %s%n", startTime);
         System.out.print("Medelpris 4h: " + average + " öre/kWh");
     }
 
