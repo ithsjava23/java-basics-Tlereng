@@ -1,7 +1,6 @@
 package org.example;
 import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 
 public class SortingClass {
     public void execute(List<HourlyPrice> hourlyPrices) {
@@ -22,13 +21,13 @@ public class SortingClass {
 
                 if (price != previousPrice) {
                     String startTime = String.format("%02d-%02d", hourlyPrice.getStartHour(), hourlyPrice.getEndHour());
-                    System.out.println(startTime + " " + price + " öre");
+                    System.out.print(startTime + " " + price + " öre\n");
                 }
 
                 previousPrice = price;
             }
         } else {
-            System.out.println("Du har inte angivit något pris.");
+            System.out.print("\nDu har inte angivit något pris.");
         }
     }
 }

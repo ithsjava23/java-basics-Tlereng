@@ -34,13 +34,13 @@ public class MinAvgMax {
             String maxTime = String.format("%02d-%02d", hourlyPrices.get(hourlyPrices.size() - 1).getStartHour(), hourlyPrices.get(hourlyPrices.size() - 1).getEndHour());
 
             // Print the results with appropriate formatting using printf.
-            System.out.println("Lägsta pris: " + minTime + ", " + min + " öre/kWh");
-            System.out.println("Högsta pris: " + maxTime + ", " + max + " öre/kWh");
+            System.out.print("Lägsta pris: " + minTime + ", " + min + " öre/kWh\n");
+            System.out.print("Högsta pris: " + maxTime + ", " + max + " öre/kWh\n");
             System.out.printf("Medelpris: %.2f öre/kWh%n", average);
 
         } else {
             // Handle the case when no prices are provided.
-            System.out.println("Du har inte angivit några priser.");
+            System.out.print("Du har inte angivit några priser.");
         }
     }
 }

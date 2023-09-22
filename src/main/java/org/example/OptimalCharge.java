@@ -34,7 +34,7 @@ public class OptimalCharge {
         String formattedAverage = decimalFormat.format(average);
 
         System.out.printf("Påbörja laddning klockan %s%n", startTime);
-        System.out.println("Medelpris 4h: " + formattedAverage + " öre/kWh");
+        System.out.print("Medelpris 4h: " + formattedAverage + " öre/kWh\n");
     }
 
     private int calculateSum(List<HourlyPrice> sequence) {
