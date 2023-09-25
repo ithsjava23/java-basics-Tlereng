@@ -1,6 +1,5 @@
 package org.example;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,10 +27,9 @@ public class OptimalCharge {
 
         String startTime = String.format("%02d", lowestSequence.get(0).getStartHour());
 
-        // Calculate the average price as a BigDecimal with two decimal places and rounding mode HALF_UP.
-        BigDecimal averageBigDecimal = new BigDecimal(lowestSum).divide(new BigDecimal(4));
-        String average = String.format("%.1f", averageBigDecimal);
-
+        // Calculate the average price as a Double with one decimal place.
+        double averageDouble = (double) lowestSum / 4;
+        String average = String.format("%.1f", averageDouble);
 
         System.out.printf("Påbörja laddning klockan %s%n", startTime);
         System.out.print("Medelpris 4h: " + average + " öre/kWh");
