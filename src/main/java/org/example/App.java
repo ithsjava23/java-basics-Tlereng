@@ -31,6 +31,7 @@ public class App {
 
             switch (choice) {
                 case "1" -> {
+                    hourlyPrices.clear();
                     InputNumbers inputNumbers = new InputNumbers(sc);
                     hourlyPrices = inputNumbers.execute(hourlyPrices);
                 }
